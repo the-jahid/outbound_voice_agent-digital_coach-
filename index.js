@@ -41,6 +41,7 @@ app.post('/voice', async (request, response) => {
       const aiResponse = await query({ question: request.body.SpeechResult });
       console.log('airesponse', aiResponse);
       twiml.say(aiResponse.text);
+      twiml.redirect('/voice');
     } catch (error) {
       console.error('Error querying AI Agent:', error);
       twiml.say('Sorry absher, there was an error processing your request.');
